@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class UtopiasCoin {
-    int[] coins = {1, 7, 10, 22};
-    Map<Integer, List<Integer>> map = new HashMap<>();
+    private final int[] coins = {1, 7, 10, 22};
+    private final Map<Integer, List<Integer>> map = new HashMap<>();
+
     public List<Integer> getUtopiaCoins(int value) {
         ArrayList<Integer> wallet = new ArrayList<>();
         makeCoins(wallet, value);

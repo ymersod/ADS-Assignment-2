@@ -63,12 +63,14 @@ public class NQueens {
     return true;
   }
 
-  public void printBoard() {
+  public String print() {
+    String toReturn = "";
     for (int i = 0; i < SIZE; i++) {
       for (int j = 0; j < SIZE; j++) {
-        System.out.print(board[i][j] + " ");
+        toReturn += board[i][j] + " ";
       }
-      System.out.println();
+      toReturn += "\n";
     }
+    return toReturn;
   }
 }
