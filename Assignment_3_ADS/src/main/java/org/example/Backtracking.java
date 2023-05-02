@@ -15,30 +15,43 @@ public class Backtracking {
         board = new int[queens][queens];
     }
 
-    public void tryStep(int step)
-    {
-        //Done
-        if (step==queens) return;
-
-        int[][] prevBoard = board;
-        for (int i = 0; i < queens; i++) {
-            //Saving previous board
-
-            //OK?
-            if(OK(i, step))
-            {
-                //Action
-                board[i][step] = 1;
-                setDangerZones(i,step);
-
-                tryStep(step+1);
-            }
-            //Undo
-            board = prevBoard;
-        }
-
+    public void tryStep(int step) {
+    //Done
+    if (step == queens) {
+        printBoard();
+        return;
     }
 
+    int[][] prevBoard = new int[queens][queens];
+    for (int i = 0; i < queens; i++) {
+        //Saving previous board
+        for (int j = 0; j < queens; j++) {
+            prevBoard[i][j] = board[i][j];
+        }
+
+        //OK?
+        if (OK(i, step)) {
+            //Action
+            int[][] newBoard = new int[queens][queens];
+            for (int j = 0; j < queens; j++) {
+                for (int k = 0; k < queens; k++) {
+                    newBoard[j][k] = board[j][k];
+                }
+            }
+            newBoard[i][step] = 1;
+            setDangerZones(i, step, newBoard);
+
+            tryStep(step + 1, newBoard);
+
+            //Undo
+            for (int j = 0; j < queens; j++) {
+                for (int k = 0; k < queens; k++) {
+                    board[j][k] = prevBoard[j][k];
+                }
+            }
+        }
+    }
+}
     private void setDangerZones(int h, int v)
     {
         //Horizontal
@@ -96,5 +109,5 @@ public class Backtracking {
             }
             System.out.println();
         }
-    }
+    }'
 }
