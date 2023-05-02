@@ -6,6 +6,9 @@ public class NQueens {
   private final int SIZE;
 
   public NQueens(int n) {
+    if (n < 4)
+      throw new IllegalArgumentException("Pls don't");
+
     SIZE = n;
     board = new int[SIZE][SIZE];
   }
