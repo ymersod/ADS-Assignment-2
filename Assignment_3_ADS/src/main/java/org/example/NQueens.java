@@ -71,13 +71,4 @@ public class NQueens {
       System.out.println();
     }
   }
-
-  public static void main(String[] args) {
-    NQueens nQueens = new NQueens(4);
-    if (nQueens.InitiateSolve()) {
-      nQueens.printBoard();
-    } else {
-      System.out.println("Solution not found");
-    }
-  }
 }
